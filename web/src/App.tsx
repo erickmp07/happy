@@ -1,8 +1,9 @@
 import "./styles/global.css";
+import "./styles/pages/landing.css";
 
 function App() {
     return (
-        <div className="App">
+        <div id="page-landing">
 
         </div>
     );
