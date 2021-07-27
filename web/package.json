@@ -1,5 +1,6 @@
 {
   "name": "web",
+  "description": "An app to connect people and residential institutions for children.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
