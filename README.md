@@ -39,10 +39,13 @@ The application can be accessed at [`localhost:3000`](http://localhost:3000).
 
 ## Technologies
 
+This project was developed with the following technologies:
+
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.org)
 - [Yarn](https://yarnpkg.com/)
 - [React](https://reactjs.org/)
+- [Expo](https://docs.expo.io/)
 
 ## Contributing
 
