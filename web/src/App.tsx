@@ -1,3 +1,5 @@
+import { FiArrowRight } from "react-icons/fi";
+
 import "./styles/global.css";
 import "./styles/pages/landing.css";
 
@@ -20,7 +22,7 @@ function App() {
                 </div>
 
                 <a href="" className="enter-app">
-                    &gt;
+                    <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
                 </a>
             </div>
         </div>
