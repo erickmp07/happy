@@ -46,6 +46,7 @@ This project was developed with the following technologies:
 - [Yarn](https://yarnpkg.com/)
 - [React](https://reactjs.org/)
 - [Expo](https://docs.expo.io/)
+- [Leaflet](https://leafletjs.com/)
 
 ## Contributing
 
