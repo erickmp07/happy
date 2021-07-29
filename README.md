@@ -1,5 +1,7 @@
 # happy
 
+![banner](./web/src/assets/images/banner.png)
+
 An app to connect people and residential institutions for children.
 
 ## Table of Contents
