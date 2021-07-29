@@ -1,5 +1,8 @@
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { Map, TileLayer } from "react-leaflet";
+
+import "leaflet/dist/leaflet.css";
 
 import "../styles/pages/institutions-map.css";
 
@@ -22,7 +25,13 @@ function InstitutionsMap() {
                 </footer>
             </aside>
 
-            <div></div>
+            <Map
+                center={[-22.8363444,-43.3004858]}
+                zoom={15}
+                style={{ width: "100%", height: "100%" }} 
+            >
+                <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            </Map>
 
             <Link to="" className="create-institution">
                 <FiPlus size={32} color="#fff" />
