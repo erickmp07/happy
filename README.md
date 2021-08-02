@@ -36,6 +36,12 @@ yarn
 
 ## Usage
 
+First, start the server:
+```bash
+cd happy/backend
+yarn dev
+```
+
 To run the web app:
 ```bash
 cd happy/web
