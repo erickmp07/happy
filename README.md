@@ -49,6 +49,7 @@ This project was developed with the following technologies:
 - [React](https://reactjs.org/)
 - [Expo](https://docs.expo.io/)
 - [Leaflet](https://leafletjs.com/)
+- [Express](https://expressjs.com/)
 
 ## Contributing
 
