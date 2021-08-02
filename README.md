@@ -25,6 +25,11 @@ https://github.com/erickmp07/happy.git
 
 - From the root directory where the project was cloned, install its dependencies with [`yarn` command](https://classic.yarnpkg.com/en/docs/usage):
 ```bash
+cd happy/backend
+yarn
+```
+
+```bash
 cd happy/web
 yarn
 ```
