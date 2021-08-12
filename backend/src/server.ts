@@ -33,9 +33,7 @@ app.post("/institutions", async (request: Request, response: Response) => {
 
     await institutionsRepository.save(institution);
 
-    return response.json({
-        message: "Hello World"
-    });
+    return response.status(201).json(institution);
 });
 
 app.listen(3333);
