@@ -61,6 +61,7 @@ This project was developed with the following technologies:
 - [Expo](https://docs.expo.io/)
 - [Leaflet](https://leafletjs.com/)
 - [Express](https://expressjs.com/)
+- [TypeORM](https://typeorm.io/#/)
 
 ## Contributing
 
