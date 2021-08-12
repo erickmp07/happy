@@ -62,6 +62,7 @@ This project was developed with the following technologies:
 - [Leaflet](https://leafletjs.com/)
 - [Express](https://expressjs.com/)
 - [TypeORM](https://typeorm.io/#/)
+- [SQLite3](https://sqlite.org)
 
 ## Contributing
 
