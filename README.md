@@ -73,6 +73,10 @@ The available routes are:
 # GET - List Institutions
 http://localhost:{port}/institutions
 
+# GET - Show one Institution or fail
+http://localhost:{port}/institutions/:id
+id: number
+
 # POST (JSON) - Create Institution
 http://localhost:{port}/institutions
 body: {
