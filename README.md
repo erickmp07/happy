@@ -9,6 +9,7 @@ An app to connect people and residential institutions for children.
 - [Install](#install)
 - [Usage](#usage)
 - [Technologies](#technologies)
+- [API](#api)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -63,6 +64,27 @@ This project was developed with the following technologies:
 - [Express](https://expressjs.com/)
 - [TypeORM](https://typeorm.io/#/)
 - [SQLite3](https://sqlite.org)
+
+## API
+
+The available routes are:
+
+```bash
+# GET - List Institutions
+http://localhost:{port}/institutions
+
+# POST (JSON) - Create Institution
+http://localhost:{port}/institutions
+body: {
+    "name": "Institution's name",
+	"latitude": 0.000000,
+	"longitude": 0.000000,
+	"about": "Something about the institution",
+	"instructions": "Instructions for visitors",
+	"opening_hours": "Hours that the institution is open",
+	"open_on_weekends": true / false
+}
+```
 
 ## Contributing
 
