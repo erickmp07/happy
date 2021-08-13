@@ -67,6 +67,7 @@ This project was developed with the following technologies:
 - [Multer](https://github.com/expressjs/multer)
 - [Express-Async-Errors](https://github.com/davidbanham/express-async-errors)
 - [Yup](https://github.com/jquense/yup)
+- [CORS](https://github.com/expressjs/cors)
 
 ## API
 
