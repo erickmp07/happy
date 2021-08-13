@@ -9,6 +9,7 @@ An app to connect people and residential institutions for children.
 - [Install](#install)
 - [Usage](#usage)
 - [Technologies](#technologies)
+- [API](#api)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -25,11 +26,22 @@ https://github.com/erickmp07/happy.git
 
 - From the root directory where the project was cloned, install its dependencies with [`yarn` command](https://classic.yarnpkg.com/en/docs/usage):
 ```bash
+cd happy/backend
+yarn
+```
+
+```bash
 cd happy/web
 yarn
 ```
 
 ## Usage
+
+First, start the server:
+```bash
+cd happy/backend
+yarn dev
+```
 
 To run the web app:
 ```bash
@@ -49,6 +61,40 @@ This project was developed with the following technologies:
 - [React](https://reactjs.org/)
 - [Expo](https://docs.expo.io/)
 - [Leaflet](https://leafletjs.com/)
+- [Express](https://expressjs.com/)
+- [TypeORM](https://typeorm.io/#/)
+- [SQLite3](https://sqlite.org)
+- [Multer](https://github.com/expressjs/multer)
+- [Express-Async-Errors](https://github.com/davidbanham/express-async-errors)
+- [Yup](https://github.com/jquense/yup)
+- [CORS](https://github.com/expressjs/cors)
+
+## API
+
+The available routes are:
+
+```bash
+# GET - List Institutions
+http://localhost:{port}/institutions
+
+# GET - Show one Institution or fail
+http://localhost:{port}/institutions/:id
+id: number
+
+# POST (Multipart Form) - Create Institution
+http://localhost:{port}/institutions
+form: {
+    "name"				"Institution's name",
+	"latitude"			0.000000,
+	"longitude"			0.000000,
+	"about"				"Something about the institution",
+	"instructions"		"Instructions for visitors",
+	"opening_hours"		"Hours that the institution is open",
+	"open_on_weekends"	true / false,
+	"images"			File,
+	"images"			File
+}
+```
 
 ## Contributing
 
