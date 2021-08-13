@@ -6,7 +6,9 @@ export default {
     async index(request: Request, response: Response) {
         const institutionsRepository = getRepository(Institution);
 
-        const institutions = await institutionsRepository.find();
+        const institutions = await institutionsRepository.find({
+            relations: ["images"]
+        });
 
         return response.json(institutions);
     },
@@ -16,7 +18,9 @@ export default {
 
         const institutionsRepository = getRepository(Institution);
 
-        const institution = await institutionsRepository.findOneOrFail(id);
+        const institution = await institutionsRepository.findOneOrFail(id, {
+            relations: ["images"]
+        });
 
         return response.json(institution);
     },
