@@ -66,6 +66,7 @@ This project was developed with the following technologies:
 - [SQLite3](https://sqlite.org)
 - [Multer](https://github.com/expressjs/multer)
 - [Express-Async-Errors](https://github.com/davidbanham/express-async-errors)
+- [Yup](https://github.com/jquense/yup)
 
 ## API
 
