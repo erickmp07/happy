@@ -65,6 +65,7 @@ This project was developed with the following technologies:
 - [TypeORM](https://typeorm.io/#/)
 - [SQLite3](https://sqlite.org)
 - [Multer](https://github.com/expressjs/multer)
+- [Express-Async-Errors](https://github.com/davidbanham/express-async-errors)
 
 ## API
 
