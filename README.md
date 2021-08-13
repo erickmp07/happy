@@ -78,16 +78,18 @@ http://localhost:{port}/institutions
 http://localhost:{port}/institutions/:id
 id: number
 
-# POST (JSON) - Create Institution
+# POST (Multipart Form) - Create Institution
 http://localhost:{port}/institutions
-body: {
-    "name": "Institution's name",
-	"latitude": 0.000000,
-	"longitude": 0.000000,
-	"about": "Something about the institution",
-	"instructions": "Instructions for visitors",
-	"opening_hours": "Hours that the institution is open",
-	"open_on_weekends": true / false
+form: {
+    "name"				"Institution's name",
+	"latitude"			0.000000,
+	"longitude"			0.000000,
+	"about"				"Something about the institution",
+	"instructions"		"Instructions for visitors",
+	"opening_hours"		"Hours that the institution is open",
+	"open_on_weekends"	true / false,
+	"images"			File,
+	"images"			File
 }
 ```
 
