@@ -64,6 +64,7 @@ This project was developed with the following technologies:
 - [Express](https://expressjs.com/)
 - [TypeORM](https://typeorm.io/#/)
 - [SQLite3](https://sqlite.org)
+- [Multer](https://github.com/expressjs/multer)
 
 ## API
 
