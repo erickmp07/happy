@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
+
+import institutionView from "../views/institutions_view";
 import Institution from "../models/Institutions";
 
 export default {
@@ -10,7 +12,7 @@ export default {
             relations: ["images"]
         });
 
-        return response.json(institutions);
+        return response.json(institutionView.renderMany(institutions));
     },
 
     async show(request: Request, response: Response) {
@@ -22,7 +24,7 @@ export default {
             relations: ["images"]
         });
 
-        return response.json(institution);
+        return response.json(institutionView.render(institution));
     },
 
     async create(request: Request, response: Response) {
