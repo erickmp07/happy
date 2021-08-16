@@ -33,7 +33,7 @@ function InstitutionsMap() {
             </aside>
 
             <Map
-                center={[-22.8363444,-43.3004858]}
+                center={[-22.836890,-43.306710]}
                 zoom={15}
                 style={{ width: "100%", height: "100%" }} 
             >
@@ -41,7 +41,7 @@ function InstitutionsMap() {
 
                 <Marker
                     icon={mapIcon}
-                    position={[-22.8363444,-43.3004858]} 
+                    position={[-22.836890,-43.306710]} 
                 />
             </Map>
 
