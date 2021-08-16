@@ -1,12 +1,17 @@
 import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { Map, TileLayer } from "react-leaflet";
+import { Map, Marker, TileLayer } from "react-leaflet";
+import Leaflet from "leaflet";
 
 import "leaflet/dist/leaflet.css";
 
 import "../styles/pages/institutions-map.css";
 
 import mapMarkerImg from "../assets/images/map-marker.svg";
+
+const mapIcon = Leaflet.icon({
+    iconUrl: mapMarkerImg
+});
 
 function InstitutionsMap() {
     return (
@@ -31,6 +36,11 @@ function InstitutionsMap() {
                 style={{ width: "100%", height: "100%" }} 
             >
                 <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+                <Marker
+                    icon={mapIcon}
+                    position={[-22.8363444,-43.3004858]} 
+                />
             </Map>
 
             <Link to="" className="create-institution">
