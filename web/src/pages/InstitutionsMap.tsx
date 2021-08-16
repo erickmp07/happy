@@ -10,7 +10,9 @@ import "../styles/pages/institutions-map.css";
 import mapMarkerImg from "../assets/images/map-marker.svg";
 
 const mapIcon = Leaflet.icon({
-    iconUrl: mapMarkerImg
+    iconUrl: mapMarkerImg,
+    iconSize: [58, 68],
+    iconAnchor: [29, 68]
 });
 
 function InstitutionsMap() {
