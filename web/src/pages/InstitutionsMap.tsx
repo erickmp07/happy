@@ -1,6 +1,6 @@
-import { FiPlus } from "react-icons/fi";
+import { FiArrowRight, FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { Map, Marker, TileLayer } from "react-leaflet";
+import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import Leaflet from "leaflet";
 
 import "leaflet/dist/leaflet.css";
@@ -12,7 +12,8 @@ import mapMarkerImg from "../assets/images/map-marker.svg";
 const mapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
     iconSize: [58, 68],
-    iconAnchor: [29, 68]
+    iconAnchor: [29, 68],
+    popupAnchor: [170, 2]
 });
 
 function InstitutionsMap() {
@@ -42,7 +43,14 @@ function InstitutionsMap() {
                 <Marker
                     icon={mapIcon}
                     position={[-22.836890,-43.306710]} 
-                />
+                >
+                    <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
+                        Institution's name
+                        <Link to="">
+                            <FiArrowRight size={20} color="#fff" />
+                        </Link>
+                    </Popup>
+                </Marker>
             </Map>
 
             <Link to="" className="create-institution">
