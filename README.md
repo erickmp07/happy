@@ -68,6 +68,7 @@ This project was developed with the following technologies:
 - [Express-Async-Errors](https://github.com/davidbanham/express-async-errors)
 - [Yup](https://github.com/jquense/yup)
 - [CORS](https://github.com/expressjs/cors)
+- [Axios](https://axios-http.com/)
 
 ## API
 
