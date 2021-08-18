@@ -1,22 +1,32 @@
+import { useEffect, useState } from "react";
 import { FiArrowRight, FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import Leaflet from "leaflet";
-
-import "leaflet/dist/leaflet.css";
-
-import "../styles/pages/institutions-map.css";
+import { Marker, Popup } from "react-leaflet";
 
 import mapMarkerImg from "../assets/images/map-marker.svg";
 
-const mapIcon = Leaflet.icon({
-    iconUrl: mapMarkerImg,
-    iconSize: [58, 68],
-    iconAnchor: [29, 68],
-    popupAnchor: [170, 2]
-});
+import Map from "../components/Map";
+
+import "../styles/pages/institutions-map.css";
+import mapIcon from "../utils/mapIcon";
+import api from "../services/api";
+
+interface Institution {
+    id: number;
+    name: string;
+    latitude: number;
+    longitude: number;
+}
 
 function InstitutionsMap() {
+    const [institutions, setInstitutions] = useState<Institution[]>([]);
+
+    useEffect(() => {
+        api.get("institutions").then(response => {
+            setInstitutions(response.data);
+        });
+    }, []);
+
     return (
         <div id="page-map">
             <aside>
@@ -33,27 +43,26 @@ function InstitutionsMap() {
                 </footer>
             </aside>
 
-            <Map
-                center={[-22.836890,-43.306710]}
-                zoom={15}
-                style={{ width: "100%", height: "100%" }} 
-            >
-                <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
-                <Marker
-                    icon={mapIcon}
-                    position={[-22.836890,-43.306710]} 
-                >
-                    <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-                        Institution's name
-                        <Link to="">
-                            <FiArrowRight size={20} color="#fff" />
-                        </Link>
-                    </Popup>
-                </Marker>
+            <Map>
+                {institutions.map(institution => {
+                    return (
+                        <Marker
+                            key={institution.id }
+                            icon={mapIcon}
+                            position={[institution.latitude, institution.longitude]} 
+                        >
+                            <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
+                                {institution.name}
+                                <Link to={`/institutions/${institution.id}`}>
+                                    <FiArrowRight size={20} color="#fff" />
+                                </Link>
+                            </Popup>
+                        </Marker>
+                    );
+                })}
             </Map>
 
-            <Link to="" className="create-institution">
+            <Link to="/institutions/create" className="create-institution">
                 <FiPlus size={32} color="#fff" />
             </Link>
         </div>
