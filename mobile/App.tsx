@@ -1,6 +1,8 @@
 import React from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
-import  MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import  MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+
+import mapMarker from "./src/images/map-marker.png";
 
 export default function App() {
     return (
@@ -13,7 +15,16 @@ export default function App() {
                     longitude: -43.306520,
                     latitudeDelta: 0.008,
                     longitudeDelta: 0.008
-                }} />
+                }}
+            >
+                <Marker 
+                    icon={mapMarker}
+                    coordinate={{
+                        latitude: -22.835987,
+                        longitude: -43.306520
+                    }}
+                />
+            </MapView>
         </View>
     );
 }
