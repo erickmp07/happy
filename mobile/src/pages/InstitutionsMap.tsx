@@ -1,11 +1,18 @@
 import React from "react";
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import  MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { CommonActions, useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
 import mapMarker from "../images/map-marker.png";
 
 export default function InstitutionsMap() {
+    const navigation = useNavigation();
+
+    function handleNavigateToInstitutionDetails() {
+        navigation.dispatch(CommonActions.navigate({ name: "InstitutionDetails" }));
+    }
+
     return (
         <View style={styles.container}>
             <MapView 
@@ -29,7 +36,7 @@ export default function InstitutionsMap() {
                         longitude: -43.306520
                     }}
                 >
-                    <Callout tooltip onPress={() => { }}>
+                    <Callout tooltip onPress={handleNavigateToInstitutionDetails}>
                         <View style={styles.calloutContainer}>
                             <Text style={styles.calloutText}>Children residential</Text>
                         </View>
