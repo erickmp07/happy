@@ -2,10 +2,22 @@ import React from "react";
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import  MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { Feather } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
+import { Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold } from "@expo-google-fonts/nunito";
 
 import mapMarker from "./src/images/map-marker.png";
 
 export default function App() {
+    const [fontsLoaded] = useFonts({
+        Nunito_600SemiBold,
+        Nunito_700Bold,
+        Nunito_800ExtraBold
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+
     return (
         <View style={styles.container}>
             <MapView 
@@ -31,7 +43,7 @@ export default function App() {
                 >
                     <Callout tooltip onPress={() => { }}>
                         <View style={styles.calloutContainer}>
-                            <Text style={styles.calloutText}>Children residential institution</Text>
+                            <Text style={styles.calloutText}>Children residential</Text>
                         </View>
                     </Callout>
                 </Marker>
@@ -69,7 +81,8 @@ const styles = StyleSheet.create({
 
     calloutText: {
         color: "#0089a5",
-        fontSize: 14
+        fontSize: 14,
+        fontFamily: "Nunito_700Bold"
     },
 
     footer: {
@@ -91,6 +104,7 @@ const styles = StyleSheet.create({
     },
 
     footerText: {
+        fontFamily: "Nunito_700Bold",
         color: "#8fa7b3"
     },
 
