@@ -85,7 +85,9 @@ const styles = StyleSheet.create({
 
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+
+        elevation: 3
     },
 
     footerText: {
