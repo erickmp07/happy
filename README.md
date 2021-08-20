@@ -54,7 +54,17 @@ cd happy/web
 yarn start
 ```
 
-The application can be accessed at [`localhost:3000`](http://localhost:3000).
+NOTE: The application can be accessed at [`localhost:3000`](http://localhost:3000).
+
+To run the mobile app, connect a smartphone by USB or run an emulator. For further information, read [this](https://docs.expo.dev/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet).
+
+Then:
+```bash
+cd happy/mobile
+yarn start
+```
+
+On the Expo page, run the app on Android device/simulator, iOS simulator or in the web browser. For further information, read [this](https://docs.expo.dev/get-started/create-a-new-app/#starting-the-development-server).
 
 ## Technologies
 
