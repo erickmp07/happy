@@ -35,6 +35,11 @@ cd happy/web
 yarn
 ```
 
+```bash
+cd happy/mobile
+yarn
+```
+
 ## Usage
 
 First, start the server:
