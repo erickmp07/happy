@@ -59,6 +59,7 @@ This project was developed with the following technologies:
 - [Node.js](https://nodejs.org)
 - [Yarn](https://yarnpkg.com/)
 - [React](https://reactjs.org/)
+- [React Native](https://reactnative.dev/)
 - [Expo](https://docs.expo.io/)
 - [Leaflet](https://leafletjs.com/)
 - [Express](https://expressjs.com/)
