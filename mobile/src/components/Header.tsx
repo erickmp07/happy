@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { BorderlessButton } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { CommonActions, useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
 interface HeaderProps {
@@ -11,6 +11,10 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
     const navigation = useNavigation();
 
+    function handleGoBackToAppHomepage() {
+        navigation.dispatch(CommonActions.navigate({ name: "InstituionsMap" }));
+    }
+
     return (
         <View style={styles.container}>
             <BorderlessButton onPress={navigation.goBack}>
@@ -19,7 +23,7 @@ export default function Header(props: HeaderProps) {
 
             <Text style={styles.title}>{props.title}</Text>
 
-            <BorderlessButton onPress={() => {}}>
+            <BorderlessButton onPress={handleGoBackToAppHomepage}>
                 <Feather name="x" size={24} color="#ff669d" />
             </BorderlessButton>
         </View>
