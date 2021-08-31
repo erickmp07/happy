@@ -6,13 +6,14 @@ import { Feather } from "@expo/vector-icons";
 
 interface HeaderProps {
     title: string;
+    showCancel?: boolean;
 }
 
-export default function Header(props: HeaderProps) {
+export default function Header({ title, showCancel = true }: HeaderProps) {
     const navigation = useNavigation();
 
     function handleGoBackToAppHomepage() {
-        navigation.dispatch(CommonActions.navigate({ name: "InstituionsMap" }));
+        navigation.dispatch(CommonActions.navigate({ name: "InstitutionsMap" }));
     }
 
     return (
@@ -21,11 +22,18 @@ export default function Header(props: HeaderProps) {
                 <Feather name="arrow-left" size={24} color="#15b6d6" />
             </BorderlessButton>
 
-            <Text style={styles.title}>{props.title}</Text>
+            <Text style={styles.title}>{title}</Text>
 
-            <BorderlessButton onPress={handleGoBackToAppHomepage}>
-                <Feather name="x" size={24} color="#ff669d" />
-            </BorderlessButton>
+            { showCancel 
+                ? (
+                    <BorderlessButton onPress={handleGoBackToAppHomepage}>
+                        <Feather name="x" size={24} color="#ff669d" />
+                    </BorderlessButton>
+                )
+                : (
+                    <View /> 
+                )
+            }
         </View>
     );
 }
