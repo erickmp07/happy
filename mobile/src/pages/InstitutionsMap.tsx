@@ -1,6 +1,7 @@
 import React from "react";
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import  MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { RectButton } from "react-native-gesture-handler";
 import { CommonActions, useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
@@ -51,9 +52,9 @@ export default function InstitutionsMap() {
             <View style={styles.footer}>
                 <Text style={styles.footerText}>2 institutions found</Text>
 
-                <TouchableOpacity style={styles.createInstitutionButton} onPress={handleNavigateToCreateInstitution}>
+                <RectButton style={styles.createInstitutionButton} onPress={handleNavigateToCreateInstitution}>
                     <Feather name="plus" size={20} color="#fff" />
-                </TouchableOpacity>
+                </RectButton>
             </View>
         </View>
     );
