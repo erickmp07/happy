@@ -14,7 +14,7 @@ import InstitutionData from "./pages/CreateInstitution/InstitutionData";
 export default function Routes() {
     return (
         <NavigationContainer>
-            <Navigator screenOptions={{ headerShown: false }}>
+            <Navigator screenOptions={{ headerShown: false, cardStyle: { backgroundColor: "#f2f3f5" } }}>
                 <Screen name="InstitutionsMap" component={InstitutionsMap} />
 
                 <Screen name="InstitutionDetails" component={InstitutionDetails} />
