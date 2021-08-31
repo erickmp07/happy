@@ -13,6 +13,10 @@ export default function InstitutionsMap() {
         navigation.dispatch(CommonActions.navigate({ name: "InstitutionDetails" }));
     }
 
+    function handleNavigateToCreateInstitution() {
+        navigation.dispatch(CommonActions.navigate({ name: "SelectMapPosition" }));
+    }
+
     return (
         <View style={styles.container}>
             <MapView 
@@ -47,7 +51,7 @@ export default function InstitutionsMap() {
             <View style={styles.footer}>
                 <Text style={styles.footerText}>2 institutions found</Text>
 
-                <TouchableOpacity style={styles.createInstitutionButton} onPress={() => {}}>
+                <TouchableOpacity style={styles.createInstitutionButton} onPress={handleNavigateToCreateInstitution}>
                     <Feather name="plus" size={20} color="#fff" />
                 </TouchableOpacity>
             </View>
