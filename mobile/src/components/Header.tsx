@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { BorderlessButton } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
 interface HeaderProps {
@@ -8,9 +9,11 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps) {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
-            <BorderlessButton onPress={() => {}}>
+            <BorderlessButton onPress={navigation.goBack}>
                 <Feather name="arrow-left" size={24} color="#15b6d6" />
             </BorderlessButton>
 
