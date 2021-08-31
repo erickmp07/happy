@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { BorderlessButton } from "react-native-gesture-handler";
+import { Feather } from "@expo/vector-icons";
 
 interface HeaderProps {
     title: string;
@@ -8,6 +10,10 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
     return (
         <View style={styles.container}>
+            <BorderlessButton onPress={() => {}}>
+                <Feather name="arrow-left" size={24} color="#15b6d6" />
+            </BorderlessButton>
+
             <Text style={styles.title}>{props.title}</Text>
         </View>
     );
