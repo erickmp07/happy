@@ -15,6 +15,10 @@ export default function Header(props: HeaderProps) {
             </BorderlessButton>
 
             <Text style={styles.title}>{props.title}</Text>
+
+            <BorderlessButton onPress={() => {}}>
+                <Feather name="x" size={24} color="#ff669d" />
+            </BorderlessButton>
         </View>
     );
 }
