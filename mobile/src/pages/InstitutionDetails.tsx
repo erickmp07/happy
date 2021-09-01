@@ -4,7 +4,7 @@ import MapView, { Marker } from "react-native-maps";
 import { Feather } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
 
-import mapMarkerImg from "../images/map-marker.png";
+import mapMarker from "../images/map-marker.png";
 import api from "../services/api";
 
 interface InstitutionDetailsRouteParams {
@@ -84,7 +84,7 @@ export default function InstitutionDetails() {
                         style={styles.mapStyle}
                     >
                         <Marker
-                            icon={mapMarkerImg}
+                            icon={mapMarker}
                             coordinate={{
                                 latitude: institution.latitude,
                                 longitude: institution.longitude,
