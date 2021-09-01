@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-import { ScrollView, View, StyleSheet, Switch, Text, TextInput, TouchableOpacity } from "react-native";
+import { Image, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { RectButton } from "react-native-gesture-handler";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 
 interface InstitutionDataRouteParams {
-    position: { latitude: number, longitude: number };
+    position: { 
+        latitude: number; 
+        longitude: number; 
+    };
 }
 
 export default function InstitutionData() {
+    const [name, setName] = useState("");
+    const [about, setAbout] = useState("");
+    const [instructions, setInstructions] = useState("");
+    const [opening_hours, setOpeningHours] = useState("");
+    const [open_on_weekends, setOpenOnWeekends] = useState(true);
+    const [images, setImages] = useState<string[]>([]);
+
     const route = useRoute();
     const navigation = useNavigation();
-
-    const [open_on_weekends, setOpenOnWeekends] = useState(false);
 
     const params = route.params as InstitutionDataRouteParams;
     const position = params.position;
@@ -26,15 +34,23 @@ export default function InstitutionData() {
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
         if (status !== "granted") {
-            alert("Eita! Precisamos de acesso às suas fotos...");
+            alert("We need permission to access your photos.");
+            return;
         }
 
         const result = await ImagePicker.launchImageLibraryAsync({
             allowsEditing: true,
             quality: 1,
+            mediaTypes: ImagePicker.MediaTypeOptions.Images
         });
 
-        console.log(result);
+        if (result.cancelled) {
+            return;
+        }
+
+        const { uri: image } = result;
+
+        setImages([...images, image]);
     }
 
     return (
@@ -44,12 +60,16 @@ export default function InstitutionData() {
             <Text style={styles.label}>Name</Text>
             <TextInput
                 style={styles.input}
+                value={name}
+                onChangeText={setName}
             />
 
             <Text style={styles.label}>About</Text>
             <TextInput
                 style={[styles.input, { height: 110 }]}
                 multiline
+                value={about}
+                onChangeText={setAbout}
             />
 
             {/* <Text style={styles.label}>WhatsApp</Text>
@@ -58,6 +78,19 @@ export default function InstitutionData() {
             /> */}
 
             <Text style={styles.label}>Photos</Text>
+
+            <View style={styles.uploadedImagesContainer}>
+                {images.map(image => {
+                    return (
+                        <Image
+                            key={image}
+                            source={{ uri: image }}
+                            style={styles.uploadedImage}
+                        />
+                    );
+                })}
+            </View>
+
             <TouchableOpacity style={styles.imagesInput} onPress={handleSelectImages}>
                 <Feather name="plus" size={24} color="#15B6D6" />
             </TouchableOpacity>
@@ -68,11 +101,15 @@ export default function InstitutionData() {
             <TextInput
                 style={[styles.input, { height: 110 }]}
                 multiline
+                value={instructions}
+                onChangeText={setInstructions}
             />
 
             <Text style={styles.label}>Opening hours</Text>
             <TextInput
                 style={styles.input}
+                value={opening_hours}
+                onChangeText={setOpeningHours}
             />
 
             <View style={styles.switchContainer}>
@@ -128,6 +165,18 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
         marginBottom: 16,
         textAlignVertical: "top",
+    },
+
+    uploadedImagesContainer: {
+        flexDirection: "row"
+    },
+
+    uploadedImage: {
+        width: 64,
+        height: 64,
+        borderRadius: 20,
+        marginBottom: 32,
+        marginRight: 8
     },
 
     imagesInput: {
