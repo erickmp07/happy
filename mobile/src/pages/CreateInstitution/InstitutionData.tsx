@@ -52,10 +52,10 @@ export default function InstitutionData() {
                 multiline
             />
 
-            <Text style={styles.label}>WhatsApp</Text>
+            {/* <Text style={styles.label}>WhatsApp</Text>
             <TextInput
                 style={styles.input}
-            />
+            /> */}
 
             <Text style={styles.label}>Photos</Text>
             <TouchableOpacity style={styles.imagesInput} onPress={handleSelectImages}>
