@@ -27,8 +27,8 @@ export default function InstitutionsMap() {
         });
     }, []);
 
-    function handleNavigateToInstitutionDetails() {
-        navigation.dispatch(CommonActions.navigate({ name: "InstitutionDetails" }));
+    function handleNavigateToInstitutionDetails(id: number) {
+        navigation.dispatch(CommonActions.navigate({ name: "InstitutionDetails", params: { id } }));
     }
 
     function handleNavigateToCreateInstitution() {
@@ -61,7 +61,7 @@ export default function InstitutionsMap() {
                                 longitude: institution.longitude
                             }}
                         >
-                            <Callout tooltip onPress={handleNavigateToInstitutionDetails}>
+                            <Callout tooltip onPress={() => handleNavigateToInstitutionDetails(institution.id)}>
                                 <View style={styles.calloutContainer}>
                                     <Text style={styles.calloutText}>{institution.name}</Text>
                                 </View>
@@ -72,7 +72,7 @@ export default function InstitutionsMap() {
             </MapView>
 
             <View style={styles.footer}>
-                <Text style={styles.footerText}>2 institutions found</Text>
+                <Text style={styles.footerText}>{institutions.length} institution(s) found</Text>
 
                 <RectButton style={styles.createInstitutionButton} onPress={handleNavigateToCreateInstitution}>
                     <Feather name="plus" size={20} color="#fff" />
