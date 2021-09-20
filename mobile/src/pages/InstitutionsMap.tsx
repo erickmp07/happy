@@ -1,16 +1,38 @@
-import React from "react";
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import  MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
-import { CommonActions, useNavigation } from "@react-navigation/native";
+import { RectButton } from "react-native-gesture-handler";
+import { CommonActions, useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
 import mapMarker from "../images/map-marker.png";
 
+import api from "../services/api";
+
+interface Institution {
+    id: number;
+    name: string;
+    latitude: number;
+    longitude: number;
+}
+
 export default function InstitutionsMap() {
+    const [institutions, setInstitutions] = useState<Institution[]>([]);
+
     const navigation = useNavigation();
 
-    function handleNavigateToInstitutionDetails() {
-        navigation.dispatch(CommonActions.navigate({ name: "InstitutionDetails" }));
+    useFocusEffect(() => {
+        api.get("institutions").then(response => {
+            setInstitutions(response.data);
+        });
+    });
+
+    function handleNavigateToInstitutionDetails(id: number) {
+        navigation.dispatch(CommonActions.navigate({ name: "InstitutionDetails", params: { id } }));
+    }
+
+    function handleNavigateToCreateInstitution() {
+        navigation.dispatch(CommonActions.navigate({ name: "SelectMapPosition" }));
     }
 
     return (
@@ -25,31 +47,36 @@ export default function InstitutionsMap() {
                     longitudeDelta: 0.008
                 }}
             >
-                <Marker 
-                    icon={mapMarker}
-                    calloutAnchor={{
-                        x: 2.7,
-                        y: 0.8
-                    }}
-                    coordinate={{
-                        latitude: -22.835987,
-                        longitude: -43.306520
-                    }}
-                >
-                    <Callout tooltip onPress={handleNavigateToInstitutionDetails}>
-                        <View style={styles.calloutContainer}>
-                            <Text style={styles.calloutText}>Children residential</Text>
-                        </View>
-                    </Callout>
-                </Marker>
+                {institutions.map(institution => {
+                    return(
+                        <Marker 
+                            key={institution.id}
+                            icon={mapMarker}
+                            calloutAnchor={{
+                                x: 2.7,
+                                y: 0.8
+                            }}
+                            coordinate={{
+                                latitude: institution.latitude,
+                                longitude: institution.longitude
+                            }}
+                        >
+                            <Callout tooltip onPress={() => handleNavigateToInstitutionDetails(institution.id)}>
+                                <View style={styles.calloutContainer}>
+                                    <Text style={styles.calloutText}>{institution.name}</Text>
+                                </View>
+                            </Callout>
+                        </Marker>
+                    );
+                })}
             </MapView>
 
             <View style={styles.footer}>
-                <Text style={styles.footerText}>2 institutions found</Text>
+                <Text style={styles.footerText}>{institutions.length} institution(s) found</Text>
 
-                <TouchableOpacity style={styles.createInstitutionButton} onPress={() => {}}>
+                <RectButton style={styles.createInstitutionButton} onPress={handleNavigateToCreateInstitution}>
                     <Feather name="plus" size={20} color="#fff" />
-                </TouchableOpacity>
+                </RectButton>
             </View>
         </View>
     );
