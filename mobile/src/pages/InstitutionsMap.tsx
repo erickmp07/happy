@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import  MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { RectButton } from "react-native-gesture-handler";
-import { CommonActions, useNavigation } from "@react-navigation/native";
+import { CommonActions, useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 
 import mapMarker from "../images/map-marker.png";
@@ -21,11 +21,11 @@ export default function InstitutionsMap() {
 
     const navigation = useNavigation();
 
-    useEffect(() => {
+    useFocusEffect(() => {
         api.get("institutions").then(response => {
             setInstitutions(response.data);
         });
-    }, []);
+    });
 
     function handleNavigateToInstitutionDetails(id: number) {
         navigation.dispatch(CommonActions.navigate({ name: "InstitutionDetails", params: { id } }));
